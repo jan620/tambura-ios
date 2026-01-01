@@ -1,0 +1,628 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EC47CDBF2F2037A90024017E /* CarPlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC47CDBE2F2037A90024017E /* CarPlay.framework */; };
+		EC47CDC12F2037CB0024017E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC47CDC02F2037CB0024017E /* UIKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EC153C702F06F2CD0060CF6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC153C5A2F06F2CC0060CF6B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC153C612F06F2CC0060CF6B;
+			remoteInfo = Tambura;
+		};
+		EC153C7A2F06F2CD0060CF6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC153C5A2F06F2CC0060CF6B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC153C612F06F2CC0060CF6B;
+			remoteInfo = Tambura;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EC153C622F06F2CC0060CF6B /* Tambura.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tambura.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC153C6F2F06F2CD0060CF6B /* TamburaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TamburaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC153C792F06F2CD0060CF6B /* TamburaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TamburaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC47CDBE2F2037A90024017E /* CarPlay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarPlay.framework; path = System/Library/Frameworks/CarPlay.framework; sourceTree = SDKROOT; };
+		EC47CDC02F2037CB0024017E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		EC153C8D2F06F3990060CF6B /* Exceptions for "Tambura" folder in "Tambura" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Entitlements.plist,
+				Info.plist,
+			);
+			target = EC153C612F06F2CC0060CF6B /* Tambura */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		EC153C642F06F2CC0060CF6B /* Tambura */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				EC153C8D2F06F3990060CF6B /* Exceptions for "Tambura" folder in "Tambura" target */,
+			);
+			path = Tambura;
+			sourceTree = "<group>";
+		};
+		EC153C722F06F2CD0060CF6B /* TamburaTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TamburaTests;
+			sourceTree = "<group>";
+		};
+		EC153C7C2F06F2CD0060CF6B /* TamburaUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TamburaUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EC153C5F2F06F2CC0060CF6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC47CDBF2F2037A90024017E /* CarPlay.framework in Frameworks */,
+				EC47CDC12F2037CB0024017E /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC153C6C2F06F2CD0060CF6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC153C762F06F2CD0060CF6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EC153C592F06F2CC0060CF6B = {
+			isa = PBXGroup;
+			children = (
+				EC153C642F06F2CC0060CF6B /* Tambura */,
+				EC153C722F06F2CD0060CF6B /* TamburaTests */,
+				EC153C7C2F06F2CD0060CF6B /* TamburaUITests */,
+				EC47CDBD2F2037A90024017E /* Frameworks */,
+				EC153C632F06F2CC0060CF6B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EC153C632F06F2CC0060CF6B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EC153C622F06F2CC0060CF6B /* Tambura.app */,
+				EC153C6F2F06F2CD0060CF6B /* TamburaTests.xctest */,
+				EC153C792F06F2CD0060CF6B /* TamburaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EC47CDBD2F2037A90024017E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EC47CDC02F2037CB0024017E /* UIKit.framework */,
+				EC47CDBE2F2037A90024017E /* CarPlay.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EC153C612F06F2CC0060CF6B /* Tambura */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC153C832F06F2CD0060CF6B /* Build configuration list for PBXNativeTarget "Tambura" */;
+			buildPhases = (
+				EC153C5E2F06F2CC0060CF6B /* Sources */,
+				EC153C5F2F06F2CC0060CF6B /* Frameworks */,
+				EC153C602F06F2CC0060CF6B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				EC153C642F06F2CC0060CF6B /* Tambura */,
+			);
+			name = Tambura;
+			packageProductDependencies = (
+			);
+			productName = Tambura;
+			productReference = EC153C622F06F2CC0060CF6B /* Tambura.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EC153C6E2F06F2CD0060CF6B /* TamburaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC153C862F06F2CD0060CF6B /* Build configuration list for PBXNativeTarget "TamburaTests" */;
+			buildPhases = (
+				EC153C6B2F06F2CD0060CF6B /* Sources */,
+				EC153C6C2F06F2CD0060CF6B /* Frameworks */,
+				EC153C6D2F06F2CD0060CF6B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC153C712F06F2CD0060CF6B /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				EC153C722F06F2CD0060CF6B /* TamburaTests */,
+			);
+			name = TamburaTests;
+			packageProductDependencies = (
+			);
+			productName = TamburaTests;
+			productReference = EC153C6F2F06F2CD0060CF6B /* TamburaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EC153C782F06F2CD0060CF6B /* TamburaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC153C892F06F2CD0060CF6B /* Build configuration list for PBXNativeTarget "TamburaUITests" */;
+			buildPhases = (
+				EC153C752F06F2CD0060CF6B /* Sources */,
+				EC153C762F06F2CD0060CF6B /* Frameworks */,
+				EC153C772F06F2CD0060CF6B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC153C7B2F06F2CD0060CF6B /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				EC153C7C2F06F2CD0060CF6B /* TamburaUITests */,
+			);
+			name = TamburaUITests;
+			packageProductDependencies = (
+			);
+			productName = TamburaUITests;
+			productReference = EC153C792F06F2CD0060CF6B /* TamburaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EC153C5A2F06F2CC0060CF6B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2610;
+				LastUpgradeCheck = 2640;
+				TargetAttributes = {
+					EC153C612F06F2CC0060CF6B = {
+						CreatedOnToolsVersion = 26.1.1;
+					};
+					EC153C6E2F06F2CD0060CF6B = {
+						CreatedOnToolsVersion = 26.1.1;
+						TestTargetID = EC153C612F06F2CC0060CF6B;
+					};
+					EC153C782F06F2CD0060CF6B = {
+						CreatedOnToolsVersion = 26.1.1;
+						TestTargetID = EC153C612F06F2CC0060CF6B;
+					};
+				};
+			};
+			buildConfigurationList = EC153C5D2F06F2CC0060CF6B /* Build configuration list for PBXProject "Tambura" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EC153C592F06F2CC0060CF6B;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = EC153C632F06F2CC0060CF6B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EC153C612F06F2CC0060CF6B /* Tambura */,
+				EC153C6E2F06F2CD0060CF6B /* TamburaTests */,
+				EC153C782F06F2CD0060CF6B /* TamburaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EC153C602F06F2CC0060CF6B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC153C6D2F06F2CD0060CF6B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC153C772F06F2CD0060CF6B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EC153C5E2F06F2CC0060CF6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC153C6B2F06F2CD0060CF6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC153C752F06F2CD0060CF6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EC153C712F06F2CD0060CF6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC153C612F06F2CC0060CF6B /* Tambura */;
+			targetProxy = EC153C702F06F2CD0060CF6B /* PBXContainerItemProxy */;
+		};
+		EC153C7B2F06F2CD0060CF6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC153C612F06F2CC0060CF6B /* Tambura */;
+			targetProxy = EC153C7A2F06F2CD0060CF6B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EC153C812F06F2CD0060CF6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = MYG8Z658TJ;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EC153C822F06F2CD0060CF6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = MYG8Z658TJ;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EC153C842F06F2CD0060CF6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KZ73RN3M9P;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Tambura/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Tambura;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yogitech.Tambura;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EC153C852F06F2CD0060CF6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KZ73RN3M9P;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Tambura/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Tambura;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yogitech.Tambura;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EC153C872F06F2CD0060CF6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MYG8Z658TJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yogitech.TamburaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tambura.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Tambura";
+			};
+			name = Debug;
+		};
+		EC153C882F06F2CD0060CF6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MYG8Z658TJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yogitech.TamburaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tambura.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Tambura";
+			};
+			name = Release;
+		};
+		EC153C8A2F06F2CD0060CF6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MYG8Z658TJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yogitech.TamburaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Tambura;
+			};
+			name = Debug;
+		};
+		EC153C8B2F06F2CD0060CF6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MYG8Z658TJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yogitech.TamburaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Tambura;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EC153C5D2F06F2CC0060CF6B /* Build configuration list for PBXProject "Tambura" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC153C812F06F2CD0060CF6B /* Debug */,
+				EC153C822F06F2CD0060CF6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC153C832F06F2CD0060CF6B /* Build configuration list for PBXNativeTarget "Tambura" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC153C842F06F2CD0060CF6B /* Debug */,
+				EC153C852F06F2CD0060CF6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC153C862F06F2CD0060CF6B /* Build configuration list for PBXNativeTarget "TamburaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC153C872F06F2CD0060CF6B /* Debug */,
+				EC153C882F06F2CD0060CF6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC153C892F06F2CD0060CF6B /* Build configuration list for PBXNativeTarget "TamburaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC153C8A2F06F2CD0060CF6B /* Debug */,
+				EC153C8B2F06F2CD0060CF6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EC153C5A2F06F2CC0060CF6B /* Project object */;
+}
