@@ -8,23 +8,25 @@ final class RadioPlayer: ObservableObject {
 
     static let shared = RadioPlayer()
 
-
     @Published var isPlaying: Bool = false
     @Published var isBuffering: Bool = false
     @Published var currentStation: Station?
     @Published var volume: Float = 0.5
     @Published var currentTitle: String = ""
 
-
     private let player = AVPlayer()
     private var timeControlObserver: NSKeyValueObservation?
     private var artworkCache: [String: MPMediaItemArtwork] = [:]
-    private var endObserver: Any?
-    
-    
+
+    // Stored observer tokens so they are never duplicated
+    private var stallObserver: Any?
+    private var failObserver: Any?
+    private var interruptionObserver: Any?
+
     init() {
         setupAudioSession()
         setupRemoteCommands()
+        setupInterruptionHandling()
 
         NotificationCenter.default.addObserver(
             self,
@@ -38,17 +40,45 @@ final class RadioPlayer: ObservableObject {
         artworkCache.removeAll()
     }
 
+    // MARK: - Interruption Handling (set up once in init)
+
+    private func setupInterruptionHandling() {
+        interruptionObserver = NotificationCenter.default.addObserver(
+            forName: AVAudioSession.interruptionNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] notification in
+            guard let self,
+                  let typeValue = notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt,
+                  let type = AVAudioSession.InterruptionType(rawValue: typeValue)
+            else { return }
+
+            if type == .ended {
+                let optionsValue = notification.userInfo?[AVAudioSessionInterruptionOptionKey] as? UInt ?? 0
+                let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
+                if options.contains(.shouldResume) {
+                    self.activateAudioSessionIfNeeded()
+                    self.player.play()
+                    self.isPlaying = true
+                    MPNowPlayingInfoCenter.default().playbackState = .playing
+                }
+            }
+        }
+    }
+
+    // MARK: - Playback
 
     func play(station: Station) {
         activateAudioSessionIfNeeded()
 
         if currentStation?.id == station.id {
-            // Optional: resume if paused
-            if !isPlaying {
-                resume()
-            }
+            if !isPlaying { resume() }
             return
         }
+
+        // Remove previous per-item observers
+        if let o = stallObserver { NotificationCenter.default.removeObserver(o) }
+        if let o = failObserver  { NotificationCenter.default.removeObserver(o) }
 
         currentStation = station
         currentTitle = station.name
@@ -58,57 +88,29 @@ final class RadioPlayer: ObservableObject {
 
         let item = AVPlayerItem(url: url)
         player.replaceCurrentItem(with: item)
-        
-        endObserver = NotificationCenter.default.addObserver(
+
+        // Stream failed to reach end (network error etc.)
+        failObserver = NotificationCenter.default.addObserver(
             forName: .AVPlayerItemFailedToPlayToEndTime,
             object: item,
             queue: .main
-        ) { notification in
+        ) { [weak self] notification in
             print("❌ Stream failed:", notification.userInfo ?? [:])
+            self?.reconnect()
         }
 
-        NotificationCenter.default.addObserver(
-            forName: AVAudioSession.interruptionNotification,
-            object: nil,
-            queue: .main
-        ) { notification in
-            print("⚠️ Audio interruption:", notification.userInfo ?? [:])
-        }
-
-        NotificationCenter.default.addObserver(
-            forName: UIApplication.willResignActiveNotification,
-            object: nil,
-            queue: .main
-        ) { _ in
-            print("📱 App resigned active")
-        }
-
-        NotificationCenter.default.addObserver(
-            forName: UIApplication.didEnterBackgroundNotification,
-            object: nil,
-            queue: .main
-        ) { _ in
-            print("🌙 App entered background")
-        }
-        
-        NotificationCenter.default.addObserver(
+        // Stream stalled: reconnect with a fresh AVPlayerItem instead of just play()
+        stallObserver = NotificationCenter.default.addObserver(
             forName: .AVPlayerItemPlaybackStalled,
             object: item,
             queue: .main
         ) { [weak self] _ in
-            print("⚠️ Playback stalled — retrying")
-
-            self?.player.pause()
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self?.player.play()
-            }
+            print("⚠️ Playback stalled — reconnecting")
+            self?.reconnect()
         }
-        
+
         player.volume = volume
-
         observeBuffering(for: item)
-
         player.play()
         isPlaying = true
 
@@ -143,23 +145,58 @@ final class RadioPlayer: ObservableObject {
         storage.selectedStation = nil
     }
 
+    // MARK: - Reconnect
+
+    /// Creates a fresh AVPlayerItem for the current station URL and restarts playback.
+    /// Required after a stall or network error — play() alone won't recover a dead stream.
+    private func reconnect() {
+        guard let station = currentStation,
+              let url = URL(string: station.streamURL) else { return }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            guard let self else { return }
+            // Remove old per-item observers first
+            if let o = self.stallObserver { NotificationCenter.default.removeObserver(o) }
+            if let o = self.failObserver  { NotificationCenter.default.removeObserver(o) }
+
+            let newItem = AVPlayerItem(url: url)
+            self.player.replaceCurrentItem(with: newItem)
+
+            // Re-attach per-item observers to the new item
+            self.failObserver = NotificationCenter.default.addObserver(
+                forName: .AVPlayerItemFailedToPlayToEndTime,
+                object: newItem, queue: .main
+            ) { [weak self] _ in self?.reconnect() }
+
+            self.stallObserver = NotificationCenter.default.addObserver(
+                forName: .AVPlayerItemPlaybackStalled,
+                object: newItem, queue: .main
+            ) { [weak self] _ in self?.reconnect() }
+
+            self.observeBuffering(for: newItem)
+            self.player.play()
+        }
+    }
+
+    // MARK: - Audio Session
+
     private func activateAudioSessionIfNeeded() {
         let session = AVAudioSession.sharedInstance()
-
         do {
-            try session.setCategory(
-                .playback,
-                mode: .default,
-                options: [.allowAirPlay]
-            )
-
+            try session.setCategory(.playback, mode: .default, options: [.allowAirPlay, .allowBluetooth, .allowBluetoothA2DP])
             try session.setActive(true)
         } catch {
             print("❌ Audio session activation failed:", error)
         }
     }
 
+    private func setupAudioSession() {
+        let session = AVAudioSession.sharedInstance()
+        try? session.setCategory(.playback, mode: .default, options: [.allowAirPlay, .allowBluetooth, .allowBluetoothA2DP])
+        try? session.setActive(true)
+    }
 
+    // MARK: - Buffering Observer
 
     private func observeBuffering(for item: AVPlayerItem) {
         timeControlObserver?.invalidate()
@@ -189,52 +226,53 @@ final class RadioPlayer: ObservableObject {
         }
     }
 
-
-    private func setupAudioSession() {
-        let session = AVAudioSession.sharedInstance()
-        try? session.setCategory(.playback, mode: .default, options: [.allowAirPlay])
-        try? session.setActive(true)
-    }
-
+    // MARK: - Now Playing
 
     private func setupNowPlaying(station: Station) {
-        var nowPlaying: [String: Any] = [
+        var info: [String: Any] = [
             MPMediaItemPropertyTitle: station.name,
             MPNowPlayingInfoPropertyIsLiveStream: true,
             MPNowPlayingInfoPropertyPlaybackRate: 1.0
         ]
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = info
+        MPNowPlayingInfoCenter.default().playbackState = .playing
 
-        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlaying
+        // Artwork: use cache or fetch asynchronously (never block the main thread)
+        if let cached = artworkCache[station.id] {
+            info[MPMediaItemPropertyArtwork] = cached
+            MPNowPlayingInfoCenter.default().nowPlayingInfo = info
+            return
+        }
 
-        if let cachedArtwork = artworkCache[station.id] {
-            nowPlaying[MPMediaItemPropertyArtwork] = cachedArtwork
-        } else if let url = URL(string: station.imageURL),
-                  let data = try? Data(contentsOf: url),
-                  let image = UIImage(data: data) {
+        Task.detached { [weak self] in
+            guard let self,
+                  let url = URL(string: station.imageURL),
+                  let (data, _) = try? await URLSession.shared.data(from: url),
+                  let image = UIImage(data: data)
+            else { return }
 
             let artwork = MPMediaItemArtwork(boundsSize: image.size) { _ in image }
 
-            artworkCache[station.id] = artwork
-            nowPlaying[MPMediaItemPropertyArtwork] = artwork
+            await MainActor.run {
+                self.artworkCache[station.id] = artwork
+                var updated = MPNowPlayingInfoCenter.default().nowPlayingInfo ?? info
+                updated[MPMediaItemPropertyArtwork] = artwork
+                MPNowPlayingInfoCenter.default().nowPlayingInfo = updated
+            }
         }
-
-        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlaying
-        MPNowPlayingInfoCenter.default().playbackState = .playing
     }
 
-
+    // MARK: - Remote Commands
 
     private func setupRemoteCommands() {
         let center = MPRemoteCommandCenter.shared()
 
-        // Play
         center.playCommand.addTarget { [weak self] _ in
             guard let self else { return .commandFailed }
             self.resume()
             return .success
         }
 
-        // Pause
         center.pauseCommand.addTarget { [weak self] _ in
             self?.pause()
             return .success
@@ -253,6 +291,7 @@ final class RadioPlayer: ObservableObject {
         }
     }
 
+    // MARK: - Station Navigation
 
     private func playNextStation() {
         let storage = StationStorage.shared
